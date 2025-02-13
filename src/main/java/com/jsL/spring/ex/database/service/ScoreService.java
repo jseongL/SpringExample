@@ -11,14 +11,13 @@ import com.jsL.spring.ex.database.repository.ScoreRepository;
 @Service
 public class ScoreService {
 
-	@Autowired//스프링에서 내부적으로 객체 생성이 할 수 있게끔 인식(객체 주입)ㄴ
+	@Autowired//스프링에서 내부적으로 객체 생성이 할 수 있게끔 인식(객체 주입)
 	private ScoreRepository scoreRepository;
 	
 	//리스트 얻어오기
 	public List<Score> getScoreList() {
 		
-		List<Score> score = scoreRepository.selectScoreList();
-		
+		List<Score> score = scoreRepository.selectScoreList(); 
 		return score;
 	}
 	

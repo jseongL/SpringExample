@@ -17,7 +17,7 @@
  		FROM 
  			`new_review`
  		WHERE
- 			`id` = 5
+ 			`id` = #{id}
  	
  	</select>
  
