@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<h2>사용자 정보</h2>
+	
+	<table border="1">
+		<tr>
+			<th>id</th>      <!-- 내부적으로 getter호출해줌 -->
+			<th th:text="${user.id}">65</th>
+		</tr>
+		<tr>
+			<th>이름</th>
+			<th th:text="${user.name}">로제</th>
+		</tr>
+		<tr>
+			<th>생년월일</th>
+			<th th:text="${user.yyyymmdd}">20020234</th>
+		</tr>
+		<tr>
+			<th>이메일</th>
+			<th th:text="${user.email}">lo@vdvms.com</th>
+		</tr>
+	</table>
+</body>
+</html>

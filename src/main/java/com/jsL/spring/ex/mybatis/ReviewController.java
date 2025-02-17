@@ -19,6 +19,8 @@ public class ReviewController {
 	@ResponseBody
 	@RequestMapping("/mybatis/review") //어떤 파라메터 이름으로 전달받을지
 	public Review review(@RequestParam("id") int id){
+		//String idString = request.getParameter("id");
+		//int id = Integer.parseInt("idString");
 		
 		//전달한 id와 일치하는 리뷰정보 얻어오기
 		Review review = reviewService.getReview(id);
