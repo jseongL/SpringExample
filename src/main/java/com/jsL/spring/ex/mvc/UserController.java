@@ -28,10 +28,24 @@ public class UserController {
 			@RequestParam("name")String name
 			,@RequestParam("birthday") String birthday
 			,@RequestParam("email") String email
-			,@RequestParam("introduce") String introduce) {
+			,@RequestParam("introduce") String introduce
+			, Model model) {
 		
-		int count = userService.addUser(name, birthday, email, introduce);
-		return "삽입결과 : " + count;
+		//int count = userService.addUser(name, birthday, email, introduce);
+		
+		
+		User user = new User();
+		user.setName(name);
+		user.setYyyymmdd(birthday);
+		user.setEmail(email);
+		user.setIntroduce(introduce);
+
+		userService.addUserByObject(user);
+		model.addAttribute("user", user); 
+		
+		//return "삽입결과 : " + count;
+		return "mvc/userInfo";
+		
 	}
 
 	
