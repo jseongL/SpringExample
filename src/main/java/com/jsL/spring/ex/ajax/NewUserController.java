@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jsL.spring.ex.mvc.service.UserService;
 
@@ -20,6 +21,7 @@ public class NewUserController {
 	private UserService userService;
 	
 	//사용자 추가 API
+	@ResponseBody
 	@PostMapping("/create")
 	public Map<String, String> createUser(
 			@RequestParam("name")String name
@@ -51,6 +53,40 @@ public class NewUserController {
 	public String inputUser() {
 		return "ajax/userInput";
 	}
+	
+	
+	//email을 전달받고, 이미 추가된 이메일인지를 알려주는 API
+	@ResponseBody
+	@GetMapping("/duplicateEmail")
+	public Map<String, Boolean> isDuplicateEmail(
+			@RequestParam("email") String email
+			){
+		boolean isDuplicate = userService.isDuplicateEmail(email);
+		
+		//중복됨{"isDublicate":true}
+		//중복 안됨{"isDublicate":false}
+		Map<String, Boolean> resultMap = new HashMap<>();
+		
+		if(isDuplicate) {
+			resultMap.put("isDublicate", true);
+		}
+		else {
+			resultMap.put("isDublicate", false);
+		}
+		
+		return resultMap;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 
